@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فروشگاه من</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f4f6f8;
+  color:#222;
+}
+header{
+  background:#198754;
+  color:white;
+  padding:20px;
+  text-align:center;
+}
+header h1{margin:0 0 10px}
+.cart{
+  background:white;
+  color:#198754;
+  display:inline-block;
+  padding:8px 15px;
+  border-radius:20px;
+  font-weight:bold;
+}
+.container{
+  max-width:1000px;
+  margin:30px auto;
+  padding:15px;
+}
+h2{text-align:center}
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+.product{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 3px 10px #ddd;
+}
+.product .icon{
+  font-size:70px;
+}
+.product h3{margin:10px}
+.price{
+  color:#198754;
+  font-size:22px;
+  font-weight:bold;
+}
+button{
+  border:0;
+  background:#198754;
+  color:white;
+  padding:12px 20px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:16px;
+}
+button:hover{background:#146c43}
+footer{
+  margin-top:40px;
+  background:#222;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🛍️ فروشگاه من</h1>
+  <div class="cart">سبد خرید: <span id="cartCount">0</span></div>
+</header>
+
+<div class="container">
+
+  <h2>محصولات ما</h2>
+
+  <div class="products">
+
+    <div class="product">
+      <div class="icon">🎧</div>
+      <h3>هدفون</h3>
+      <p>هدفون با کیفیت برای موسیقی و تماس</p>
+      <div class="price">۱۲۰۰ افغانی</div>
+      <br>
+      <button onclick="addToCart()">خرید محصول</button>
+    </div>
+
+    <div class="product">
+      <div class="icon">📱</div>
+      <h3>گوشی موبایل</h3>
+      <p>گوشی مناسب استفاده روزمره</p>
+      <div class="price">۸۵۰۰ افغانی</div>
+      <br>
+      <button onclick="addToCart()">خرید محصول</button>
+    </div>
+
+    <div class="product">
+      <div class="icon">⌚</div>
+      <h3>ساعت هوشمند</h3>
+      <p>ساعت هوشمند با امکانات مختلف</p>
+      <div class="price">۲۵۰۰ افغانی</div>
+      <br>
+      <button onclick="addToCart()">خرید محصول</button>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 فروشگاه من</p>
+  <p>برای سفارش با ما تماس بگیرید</p>
+</footer>
+
+<script>
+let cart = 0;
+
+function addToCart(){
+  cart++;
+  document.getElementById("cartCount").textContent = cart;
+  alert("محصول به سبد خرید اضافه شد ✅");
+}
+</script>
+
+</body>
+</html>
