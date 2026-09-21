@@ -1,969 +1,1411 @@
-index.html<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>فروشگاه آنلاین رفیق</title>
+<meta name="description" content="فروشگاه آنلاین مدرن">
+<title>نواشاپ | فروشگاه آنلاین</title>
 
 <style>
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Tahoma,Arial,sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-    font-family:Tahoma,Arial,sans-serif;
-    background:#f5f7fa;
-    color:#222;
-    line-height:1.8;
+  background:#f5f7fb;
+  color:#172033;
+  transition:.3s;
 }
 
+body.dark{
+  background:#101522;
+  color:#f4f7ff;
+}
+
+button,input,select{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+  border:0;
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+/* TOP BAR */
+.topbar{
+  background:#111827;
+  color:white;
+  padding:9px 0;
+  font-size:13px;
+}
+
+.topbar .container{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+}
+
+/* HEADER */
 header{
-    background:#111827;
-    color:white;
-    padding:18px 5%;
-    position:sticky;
-    top:0;
-    z-index:1000;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(15px);
+  box-shadow:0 3px 20px rgba(0,0,0,.07);
 }
 
-.navbar{
-    max-width:1200px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
+body.dark header{
+  background:rgba(16,21,34,.94);
+}
+
+.nav{
+  min-height:75px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
 }
 
 .logo{
-    font-size:24px;
-    font-weight:bold;
+  font-size:25px;
+  font-weight:bold;
+  color:#635bff;
+  white-space:nowrap;
 }
 
-nav{
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
+.logo span{
+  color:#111827;
 }
 
-nav a{
-    color:white;
-    text-decoration:none;
-    padding:7px 12px;
-    border-radius:8px;
+body.dark .logo span{
+  color:white;
 }
 
-nav a:hover{
-    background:#2563eb;
+.nav-links{
+  display:flex;
+  gap:25px;
+  list-style:none;
 }
 
-.cart{
-    background:#2563eb;
-    padding:8px 14px;
-    border-radius:10px;
-    white-space:nowrap;
+.nav-links a{
+  text-decoration:none;
+  color:inherit;
+  font-size:14px;
+  font-weight:bold;
 }
 
+.nav-links a:hover{
+  color:#635bff;
+}
+
+.actions{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.icon-btn{
+  width:43px;
+  height:43px;
+  border-radius:13px;
+  background:#f0f2f7;
+  position:relative;
+  font-size:19px;
+}
+
+body.dark .icon-btn{
+  background:#20283a;
+  color:white;
+}
+
+.badge{
+  position:absolute;
+  top:-5px;
+  left:-5px;
+  background:#ef4444;
+  color:white;
+  min-width:19px;
+  height:19px;
+  border-radius:50%;
+  font-size:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* HERO */
 .hero{
-    min-height:420px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:40px 20px;
-    background:linear-gradient(135deg,#2563eb,#7c3aed);
-    color:white;
+  padding:75px 0;
+  background:
+    radial-gradient(circle at 10% 20%,rgba(99,91,255,.25),transparent 35%),
+    radial-gradient(circle at 90% 80%,rgba(14,165,233,.2),transparent 35%);
 }
 
-.hero-content{
-    max-width:750px;
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  align-items:center;
+  gap:50px;
 }
 
 .hero h1{
-    font-size:42px;
-    margin-bottom:15px;
+  font-size:clamp(35px,5vw,65px);
+  line-height:1.15;
+  margin-bottom:20px;
+}
+
+.hero h1 span{
+  color:#635bff;
 }
 
 .hero p{
-    font-size:19px;
-    margin-bottom:25px;
+  color:#64748b;
+  line-height:2;
+  max-width:620px;
+  margin-bottom:28px;
 }
 
-.btn{
-    display:inline-block;
-    border:none;
-    background:#facc15;
-    color:#111;
-    padding:12px 24px;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:16px;
-    font-weight:bold;
-    text-decoration:none;
+body.dark .hero p{
+  color:#aab4c8;
 }
 
-.btn:hover{
-    transform:scale(1.03);
+.hero-buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
 }
 
+.primary{
+  background:#635bff;
+  color:white;
+  padding:14px 24px;
+  border-radius:14px;
+  font-weight:bold;
+  box-shadow:0 10px 25px rgba(99,91,255,.25);
+}
+
+.secondary{
+  background:white;
+  color:#172033;
+  padding:14px 24px;
+  border-radius:14px;
+  font-weight:bold;
+}
+
+body.dark .secondary{
+  background:#20283a;
+  color:white;
+}
+
+.hero-card{
+  min-height:390px;
+  border-radius:35px;
+  background:linear-gradient(145deg,#635bff,#8b5cf6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:150px;
+  box-shadow:0 30px 70px rgba(99,91,255,.25);
+  animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+  50%{transform:translateY(-12px)}
+}
+
+/* SEARCH */
+.search-area{
+  margin-top:-25px;
+  position:relative;
+  z-index:5;
+}
+
+.search-box{
+  background:white;
+  padding:15px;
+  border-radius:20px;
+  box-shadow:0 15px 40px rgba(0,0,0,.1);
+  display:flex;
+  gap:10px;
+}
+
+body.dark .search-box{
+  background:#1a2232;
+}
+
+.search-box input{
+  flex:1;
+  border:0;
+  outline:0;
+  font-size:16px;
+  background:transparent;
+  color:inherit;
+}
+
+.search-box button{
+  background:#635bff;
+  color:white;
+  padding:12px 20px;
+  border-radius:12px;
+}
+
+/* SECTION */
 section{
-    max-width:1200px;
-    margin:auto;
-    padding:60px 20px;
+  padding:70px 0;
 }
 
-.section-title{
-    text-align:center;
-    margin-bottom:35px;
-    font-size:30px;
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:20px;
+  margin-bottom:28px;
+}
+
+.section-head h2{
+  font-size:30px;
+}
+
+.section-head p{
+  color:#64748b;
+  margin-top:8px;
+}
+
+/* CATEGORIES */
+.categories{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:15px;
+}
+
+.category{
+  background:white;
+  padding:25px 15px;
+  border-radius:20px;
+  text-align:center;
+  transition:.25s;
+  box-shadow:0 5px 20px rgba(0,0,0,.04);
+}
+
+body.dark .category{
+  background:#1a2232;
+}
+
+.category:hover{
+  transform:translateY(-6px);
+}
+
+.category-icon{
+  font-size:38px;
+  margin-bottom:10px;
+}
+
+/* PRODUCTS */
+.product-tools{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.product-tools select{
+  border:0;
+  background:white;
+  padding:12px 15px;
+  border-radius:12px;
+  outline:0;
+}
+
+body.dark .product-tools select{
+  background:#1a2232;
+  color:white;
 }
 
 .products{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:22px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
 }
 
 .product{
-    background:white;
-    border-radius:15px;
-    padding:20px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-    text-align:center;
-    transition:.3s;
+  background:white;
+  border-radius:22px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 7px 25px rgba(0,0,0,.06);
+  transition:.25s;
+}
+
+body.dark .product{
+  background:#1a2232;
 }
 
 .product:hover{
-    transform:translateY(-5px);
+  transform:translateY(-7px);
 }
 
-.product-image{
-    height:180px;
-    border-radius:12px;
-    background:#e5e7eb;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:65px;
-    margin-bottom:15px;
+.product-img{
+  height:210px;
+  background:#f1f4fa;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:90px;
+  position:relative;
 }
 
-.product h3{
-    margin-bottom:8px;
+body.dark .product-img{
+  background:#20283a;
 }
 
-.product p{
-    color:#666;
-    font-size:14px;
-    margin-bottom:10px;
+.discount{
+  position:absolute;
+  top:12px;
+  right:12px;
+  background:#ef4444;
+  color:white;
+  padding:6px 9px;
+  border-radius:8px;
+  font-size:11px;
+}
+
+.favorite{
+  position:absolute;
+  top:12px;
+  left:12px;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:white;
+  font-size:18px;
+}
+
+.product-info{
+  padding:18px;
+}
+
+.product-info h3{
+  margin-bottom:8px;
+}
+
+.rating{
+  color:#f59e0b;
+  font-size:13px;
+  margin-bottom:12px;
 }
 
 .price{
-    color:#16a34a;
-    font-size:20px;
-    font-weight:bold;
-    margin-bottom:15px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin-bottom:15px;
 }
 
-.product button{
-    width:100%;
-    border:none;
-    background:#2563eb;
-    color:white;
-    padding:11px;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:15px;
+.new-price{
+  font-size:19px;
+  font-weight:bold;
 }
 
-.product button:hover{
-    background:#1d4ed8;
+.old-price{
+  color:#94a3b8;
+  text-decoration:line-through;
+  font-size:13px;
 }
 
-.about{
-    background:white;
-    border-radius:15px;
-    padding:30px;
-    box-shadow:0 5px 20px rgba(0,0,0,.06);
+.buy{
+  width:100%;
+  background:#635bff;
+  color:white;
+  padding:12px;
+  border-radius:12px;
+  font-weight:bold;
 }
 
+/* FEATURES */
 .features{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:20px;
-    margin-top:25px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
 }
 
 .feature{
-    background:#f8fafc;
-    padding:20px;
-    border-radius:12px;
-    text-align:center;
+  background:white;
+  padding:25px;
+  border-radius:20px;
+}
+
+body.dark .feature{
+  background:#1a2232;
 }
 
 .feature-icon{
-    font-size:40px;
-    margin-bottom:10px;
+  font-size:32px;
+  margin-bottom:12px;
 }
 
-.contact-box{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:25px;
+.feature p{
+  color:#64748b;
+  line-height:1.8;
+  font-size:13px;
 }
 
-.contact-info,
-.contact-form{
-    background:white;
-    padding:25px;
-    border-radius:15px;
-    box-shadow:0 5px 20px rgba(0,0,0,.06);
+/* NEWSLETTER */
+.newsletter{
+  background:linear-gradient(135deg,#635bff,#8b5cf6);
+  color:white;
+  border-radius:30px;
+  padding:50px;
+  text-align:center;
 }
 
-.contact-info p{
-    margin:12px 0;
+.newsletter h2{
+  font-size:30px;
+  margin-bottom:12px;
 }
 
-input,
-textarea{
-    width:100%;
-    padding:13px;
-    border:1px solid #ddd;
-    border-radius:8px;
-    margin-bottom:15px;
-    font-family:inherit;
-    font-size:15px;
+.newsletter p{
+  opacity:.85;
+  margin-bottom:25px;
 }
 
-textarea{
-    min-height:130px;
-    resize:vertical;
+.newsletter-form{
+  max-width:600px;
+  margin:auto;
+  display:flex;
+  background:white;
+  padding:6px;
+  border-radius:15px;
 }
 
-.contact-form button{
-    width:100%;
+.newsletter-form input{
+  flex:1;
+  border:0;
+  outline:0;
+  padding:12px;
 }
 
-.cart-panel{
-    position:fixed;
-    top:0;
-    left:-100%;
-    width:350px;
-    max-width:90%;
-    height:100%;
-    background:white;
-    z-index:2000;
-    padding:25px;
-    box-shadow:5px 0 25px rgba(0,0,0,.2);
-    transition:.3s;
-    overflow-y:auto;
+.newsletter-form button{
+  background:#111827;
+  color:white;
+  padding:12px 20px;
+  border-radius:10px;
 }
 
-.cart-panel.active{
-    left:0;
+/* FOOTER */
+footer{
+  background:#111827;
+  color:white;
+  padding:55px 0 20px;
 }
 
-.cart-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:25px;
+.footer-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:40px;
 }
 
-.close-cart{
-    border:none;
-    background:#ef4444;
-    color:white;
-    padding:6px 10px;
-    border-radius:7px;
-    cursor:pointer;
+footer h3{
+  margin-bottom:18px;
+}
+
+footer p,footer li{
+  color:#9ca3af;
+  line-height:2;
+  font-size:13px;
+}
+
+footer ul{
+  list-style:none;
+}
+
+.copyright{
+  border-top:1px solid #273244;
+  margin-top:40px;
+  padding-top:20px;
+  text-align:center;
+  color:#64748b;
+  font-size:12px;
+}
+
+/* CART */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:2000;
+  display:none;
+}
+
+.overlay.show{
+  display:block;
+}
+
+.cart{
+  position:fixed;
+  top:0;
+  left:0;
+  width:min(430px,92%);
+  height:100%;
+  background:white;
+  z-index:2001;
+  transform:translateX(-110%);
+  transition:.3s;
+  padding:25px;
+  display:flex;
+  flex-direction:column;
+}
+
+body.dark .cart{
+  background:#151c2b;
+}
+
+.cart.show{
+  transform:translateX(0);
+}
+
+.cart-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.close{
+  width:38px;
+  height:38px;
+  border-radius:10px;
+  background:#eef1f6;
+}
+
+.cart-items{
+  flex:1;
+  overflow:auto;
 }
 
 .cart-item{
-    border-bottom:1px solid #ddd;
-    padding:12px 0;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  padding:12px 0;
+  border-bottom:1px solid #e5e7eb;
 }
 
-.cart-item-title{
-    font-weight:bold;
+body.dark .cart-item{
+  border-color:#293347;
 }
 
-.remove-btn{
-    background:#ef4444;
-    color:white;
-    border:none;
-    padding:5px 9px;
-    border-radius:6px;
-    cursor:pointer;
-    margin-top:7px;
+.cart-emoji{
+  width:55px;
+  height:55px;
+  background:#f1f4fa;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
 }
 
-.total{
-    font-size:20px;
-    font-weight:bold;
-    margin:20px 0;
+.qty{
+  display:flex;
+  gap:7px;
+  align-items:center;
+  margin-top:8px;
 }
 
-.overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.5);
-    z-index:1500;
+.qty button{
+  width:27px;
+  height:27px;
+  border-radius:7px;
+}
+
+.cart-total{
+  padding-top:20px;
+  border-top:1px solid #ddd;
+}
+
+.total-row{
+  display:flex;
+  justify-content:space-between;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+.checkout{
+  width:100%;
+  padding:14px;
+  background:#22c55e;
+  color:white;
+  border-radius:12px;
+  font-weight:bold;
+}
+
+/* TOAST */
+.toast{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background:#111827;
+  color:white;
+  padding:14px 20px;
+  border-radius:13px;
+  transform:translateY(100px);
+  opacity:0;
+  transition:.3s;
+  z-index:5000;
+}
+
+.toast.show{
+  transform:translateY(0);
+  opacity:1;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-grid{
+    grid-template-columns:1fr;
+  }
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .features{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .categories{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .footer-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .nav-links{
     display:none;
+  }
 }
 
-.overlay.active{
-    display:block;
-}
-
-footer{
-    background:#111827;
-    color:white;
-    padding:40px 20px;
-    text-align:center;
-}
-
-footer p{
-    margin:8px 0;
-}
-
-.message{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#16a34a;
-    color:white;
-    padding:13px 20px;
-    border-radius:10px;
+@media(max-width:600px){
+  .topbar{
     display:none;
-    z-index:3000;
-}
+  }
 
-@media(max-width:700px){
+  .hero{
+    padding:50px 0;
+  }
 
-    .navbar{
-        flex-direction:column;
-    }
+  .hero-card{
+    min-height:260px;
+    font-size:100px;
+  }
 
-    nav{
-        justify-content:center;
-    }
+  .products{
+    grid-template-columns:1fr;
+  }
 
-    .hero h1{
-        font-size:30px;
-    }
+  .categories{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-    .hero p{
-        font-size:16px;
-    }
+  .features{
+    grid-template-columns:1fr;
+  }
 
-    .contact-box{
-        grid-template-columns:1fr;
-    }
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
 
-    section{
-        padding:40px 15px;
-    }
+  .newsletter{
+    padding:30px 18px;
+  }
 
-    .cart-panel{
-        width:320px;
-    }
+  .newsletter-form{
+    flex-direction:column;
+    gap:5px;
+  }
+
+  .newsletter-form button{
+    width:100%;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<div class="topbar">
+  <div class="container">
+    <span>🚚 ارسال سریع سفارش‌ها</span>
+    <span>☎ پشتیبانی آنلاین</span>
+  </div>
+</div>
+
 <header>
-    <div class="navbar">
+  <div class="container nav">
 
-        <div class="logo">
-            🛒 فروشگاه رفیق
-        </div>
-
-        <nav>
-            <a href="#home">خانه</a>
-            <a href="#products">محصولات</a>
-            <a href="#about">درباره ما</a>
-            <a href="#contact">تماس با ما</a>
-        </nav>
-
-        <div class="cart" onclick="openCart()">
-            🛒 سبد خرید:
-            <span id="cartCount">0</span>
-        </div>
-
+    <div class="logo">
+      نوا<span>شاپ</span>
     </div>
+
+    <ul class="nav-links">
+      <li><a href="#home">خانه</a></li>
+      <li><a href="#categories">دسته‌بندی</a></li>
+      <li><a href="#products">محصولات</a></li>
+      <li><a href="#about">درباره ما</a></li>
+      <li><a href="#contact">تماس</a></li>
+    </ul>
+
+    <div class="actions">
+      <button class="icon-btn" onclick="toggleDark()">🌙</button>
+      <button class="icon-btn" onclick="openCart()">
+        🛒
+        <span class="badge" id="cartCount">0</span>
+      </button>
+    </div>
+
+  </div>
 </header>
 
+<main>
 
 <section class="hero" id="home">
+  <div class="container hero-grid">
 
-    <div class="hero-content">
+    <div>
+      <h1>
+        خرید هوشمندانه،
+        <span>زندگی بهتر.</span>
+      </h1>
 
-        <h1>
-            به فروشگاه آنلاین رفیق خوش آمدید
-        </h1>
+      <p>
+        محصولات منتخب، قیمت مناسب و تجربه‌ای سریع و ساده برای خرید آنلاین.
+        هر چیزی که نیاز داری، در یک فروشگاه مدرن.
+      </p>
 
-        <p>
-            بهترین محصولات را با قیمت مناسب انتخاب و سفارش دهید.
-        </p>
-
-        <a href="#products" class="btn">
-            مشاهده محصولات
+      <div class="hero-buttons">
+        <a href="#products" class="primary" style="text-decoration:none">
+          مشاهده محصولات
         </a>
-
+        <a href="#categories" class="secondary" style="text-decoration:none">
+          دسته‌بندی‌ها
+        </a>
+      </div>
     </div>
 
+    <div class="hero-card">
+      🛍️
+    </div>
+
+  </div>
 </section>
 
+<div class="container search-area">
+  <div class="search-box">
+    <input id="searchInput" type="text" placeholder="نام محصول را جستجو کن..." oninput="searchProducts()">
+    <button onclick="searchProducts()">🔎 جستجو</button>
+  </div>
+</div>
+
+<section id="categories">
+  <div class="container">
+
+    <div class="section-head">
+      <div>
+        <h2>دسته‌بندی‌ها</h2>
+        <p>محصول مورد نیازت را سریع پیدا کن.</p>
+      </div>
+    </div>
+
+    <div class="categories">
+
+      <div class="category" onclick="filterCategory('دیجیتال')">
+        <div class="category-icon">📱</div>
+        <b>دیجیتال</b>
+      </div>
+
+      <div class="category" onclick="filterCategory('پوشاک')">
+        <div class="category-icon">👕</div>
+        <b>پوشاک</b>
+      </div>
+
+      <div class="category" onclick="filterCategory('ساعت')">
+        <div class="category-icon">⌚</div>
+        <b>ساعت</b>
+      </div>
+
+      <div class="category" onclick="filterCategory('هدفون')">
+        <div class="category-icon">🎧</div>
+        <b>هدفون</b>
+      </div>
+
+      <div class="category" onclick="filterCategory('خانه')">
+        <div class="category-icon">🏠</div>
+        <b>خانه</b>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <section id="products">
+  <div class="container">
 
-    <h2 class="section-title">
-        محصولات ما
-    </h2>
+    <div class="section-head">
+      <div>
+        <h2>محصولات ویژه</h2>
+        <p>انتخاب‌هایی که ارزش دیدن دارند.</p>
+      </div>
 
-    <div class="products">
-
-        <div class="product">
-
-            <div class="product-image">
-                🎧
-            </div>
-
-            <h3>
-                هدفون بی‌سیم
-            </h3>
-
-            <p>
-                هدفون با کیفیت مناسب برای موسیقی و تماس.
-            </p>
-
-            <div class="price">
-                ۱۲۰۰ افغانی
-            </div>
-
-            <button onclick="addToCart('هدفون بی‌سیم',1200)">
-                خرید محصول
-            </button>
-
-        </div>
-
-
-        <div class="product">
-
-            <div class="product-image">
-                📱
-            </div>
-
-            <h3>
-                گوشی هوشمند
-            </h3>
-
-            <p>
-                گوشی مناسب برای استفاده روزمره.
-            </p>
-
-            <div class="price">
-                ۱۸۰۰۰ افغانی
-            </div>
-
-            <button onclick="addToCart('گوشی هوشمند',18000)">
-                خرید محصول
-            </button>
-
-        </div>
-
-
-        <div class="product">
-
-            <div class="product-image">
-                ⌚
-            </div>
-
-            <h3>
-                ساعت هوشمند
-            </h3>
-
-            <p>
-                ساعت هوشمند با امکانات متنوع.
-            </p>
-
-            <div class="price">
-                ۲۵۰۰ افغانی
-            </div>
-
-            <button onclick="addToCart('ساعت هوشمند',2500)">
-                خرید محصول
-            </button>
-
-        </div>
-
-
-        <div class="product">
-
-            <div class="product-image">
-                🎮
-            </div>
-
-            <h3>
-                دسته بازی
-            </h3>
-
-            <p>
-                دسته بازی مناسب برای سرگرمی و بازی.
-            </p>
-
-            <div class="price">
-                ۱۵۰۰ افغانی
-            </div>
-
-            <button onclick="addToCart('دسته بازی',1500)">
-                خرید محصول
-            </button>
-
-        </div>
-
-
-        <div class="product">
-
-            <div class="product-image">
-                💻
-            </div>
-
-            <h3>
-                لپ‌تاپ
-            </h3>
-
-            <p>
-                لپ‌تاپ مناسب کار، آموزش و استفاده روزمره.
-            </p>
-
-            <div class="price">
-                ۳۵۰۰۰ افغانی
-            </div>
-
-            <button onclick="addToCart('لپ‌تاپ',35000)">
-                خرید محصول
-            </button>
-
-        </div>
-
-
-        <div class="product">
-
-            <div class="product-image">
-                🖱️
-            </div>
-
-            <h3>
-                موس بی‌سیم
-            </h3>
-
-            <p>
-                موس راحت و مناسب استفاده طولانی.
-            </p>
-
-            <div class="price">
-                ۷۰۰ افغانی
-            </div>
-
-            <button onclick="addToCart('موس بی‌سیم',700)">
-                خرید محصول
-            </button>
-
-        </div>
-
+      <div class="product-tools">
+        <select onchange="sortProducts(this.value)">
+          <option value="default">مرتب‌سازی</option>
+          <option value="low">ارزان‌ترین</option>
+          <option value="high">گران‌ترین</option>
+        </select>
+      </div>
     </div>
 
-</section>
+    <div class="products" id="productGrid"></div>
 
+  </div>
+</section>
 
 <section id="about">
+  <div class="container">
 
-    <h2 class="section-title">
-        درباره فروشگاه
-    </h2>
+    <div class="section-head">
+      <div>
+        <h2>چرا نواشاپ؟</h2>
+        <p>تجربه خرید ساده، سریع و مطمئن.</p>
+      </div>
+    </div>
 
-    <div class="about">
+    <div class="features">
 
+      <div class="feature">
+        <div class="feature-icon">🚚</div>
+        <h3>ارسال سریع</h3>
+        <p>سفارش شما با سرعت و دقت آماده ارسال می‌شود.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">🔒</div>
+        <h3>خرید امن</h3>
+        <p>اطلاعات خرید شما با ساختار امن مدیریت می‌شود.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">💎</div>
+        <h3>محصولات منتخب</h3>
+        <p>محصولات کاربردی با طراحی و کیفیت مناسب.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">💬</div>
+        <h3>پشتیبانی</h3>
+        <p>برای سوالات و سفارش‌ها می‌توانید با ما تماس بگیرید.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="newsletter">
+      <h2>از پیشنهادهای ویژه باخبر شو!</h2>
+      <p>ایمیل خود را وارد کن تا خبرهای فروشگاه را دریافت کنی.</p>
+
+      <div class="newsletter-form">
+        <input id="email" type="email" placeholder="ایمیل شما">
+        <button onclick="subscribe()">عضویت</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer id="contact">
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+        <h3>نواشاپ</h3>
         <p>
-            فروشگاه رفیق یک نمونه فروشگاه آنلاین برای معرفی محصولات
-            و دریافت سفارش مشتریان است.
+          یک نمونه فروشگاه آنلاین مدرن با طراحی واکنش‌گرا
+          برای تجربه بهتر خرید اینترنتی.
         </p>
+      </div>
 
-        <div class="features">
+      <div>
+        <h3>لینک‌ها</h3>
+        <ul>
+          <li>خانه</li>
+          <li>محصولات</li>
+          <li>درباره ما</li>
+        </ul>
+      </div>
 
-            <div class="feature">
-                <div class="feature-icon">🚚</div>
-                <h3>تحویل سریع</h3>
-                <p>ارسال سفارش در سریع‌ترین زمان ممکن.</p>
-            </div>
+      <div>
+        <h3>خدمات</h3>
+        <ul>
+          <li>خرید آنلاین</li>
+          <li>ارسال سفارش</li>
+          <li>پشتیبانی</li>
+        </ul>
+      </div>
 
-            <div class="feature">
-                <div class="feature-icon">🔒</div>
-                <h3>خرید مطمئن</h3>
-                <p>اطلاعات سفارش شما با دقت ثبت می‌شود.</p>
-            </div>
-
-            <div class="feature">
-                <div class="feature-icon">💰</div>
-                <h3>قیمت مناسب</h3>
-                <p>محصولات با قیمت مناسب ارائه می‌شوند.</p>
-            </div>
-
-            <div class="feature">
-                <div class="feature-icon">📞</div>
-                <h3>پشتیبانی</h3>
-                <p>برای سوالات خود می‌توانید با ما تماس بگیرید.</p>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<section id="contact">
-
-    <h2 class="section-title">
-        تماس با ما
-    </h2>
-
-    <div class="contact-box">
-
-        <div class="contact-info">
-
-            <h3>
-                اطلاعات تماس
-            </h3>
-
-            <p>
-                📞 تلفن: 0700000000
-            </p>
-
-            <p>
-                📧 ایمیل: example@gmail.com
-            </p>
-
-            <p>
-                📍 آدرس: افغانستان
-            </p>
-
-            <p>
-                🕐 ساعت کاری: هر روز ۸ صبح تا ۸ شب
-            </p>
-
-        </div>
-
-
-        <div class="contact-form">
-
-            <h3>
-                ارسال پیام
-            </h3>
-
-            <input
-                type="text"
-                id="name"
-                placeholder="نام شما"
-            >
-
-            <input
-                type="tel"
-                id="phone"
-                placeholder="شماره تلفن"
-            >
-
-            <textarea
-                id="messageText"
-                placeholder="پیام شما"
-            ></textarea>
-
-            <button
-                class="btn"
-                onclick="sendMessage()"
-            >
-                ارسال پیام
-            </button>
-
-        </div>
+      <div>
+        <h3>تماس</h3>
+        <ul>
+          <li>📞 0700000000</li>
+          <li>✉ info@novashop.com</li>
+          <li>📍 افغانستان</li>
+        </ul>
+      </div>
 
     </div>
 
-</section>
+    <div class="copyright">
+      © 2026 نواشاپ — تمامی حقوق محفوظ است.
+    </div>
 
+  </div>
+</footer>
 
 <div class="overlay" id="overlay" onclick="closeCart()"></div>
 
+<aside class="cart" id="cart">
 
-<div class="cart-panel" id="cartPanel">
+  <div class="cart-head">
+    <h2>سبد خرید</h2>
+    <button class="close" onclick="closeCart()">✕</button>
+  </div>
 
-    <div class="cart-header">
+  <div class="cart-items" id="cartItems"></div>
 
-        <h2>
-            🛒 سبد خرید
-        </h2>
-
-        <button
-            class="close-cart"
-            onclick="closeCart()"
-        >
-            بستن
-        </button>
-
+  <div class="cart-total">
+    <div class="total-row">
+      <span>مجموع:</span>
+      <span id="cartTotal">۰ افغانی</span>
     </div>
 
-    <div id="cartItems">
-        <p>
-            سبد خرید خالی است.
-        </p>
-    </div>
-
-    <div class="total">
-        مجموع:
-        <span id="cartTotal">0</span>
-        افغانی
-    </div>
-
-    <button
-        class="btn"
-        style="width:100%;"
-        onclick="checkout()"
-    >
-        ثبت سفارش
+    <button class="checkout" onclick="checkout()">
+      ادامه خرید
     </button>
+  </div>
 
-</div>
+</aside>
 
-
-<div class="message" id="message">
-    عملیات با موفقیت انجام شد
-</div>
-
-
-<footer>
-
-    <h3>
-        🛒 فروشگاه آنلاین رفیق
-    </h3>
-
-    <p>
-        یک نمونه فروشگاه آنلاین حرفه‌ای
-    </p>
-
-    <p>
-        © 2026 تمامی حقوق محفوظ است.
-    </p>
-
-</footer>
-
+<div class="toast" id="toast"></div>
 
 <script>
 
-let cart = [];
+const products = [
+  {
+    id:1,
+    name:"هدفون بی‌سیم Pro",
+    category:"هدفون",
+    price:1850,
+    oldPrice:2400,
+    emoji:"🎧",
+    rating:"★★★★★",
+    discount:"۲۳٪"
+  },
+  {
+    id:2,
+    name:"گوشی هوشمند X",
+    category:"دیجیتال",
+    price:12500,
+    oldPrice:14500,
+    emoji:"📱",
+    rating:"★★★★★",
+    discount:"۱۴٪"
+  },
+  {
+    id:3,
+    name:"ساعت هوشمند Ultra",
+    category:"ساعت",
+    price:3200,
+    oldPrice:3900,
+    emoji:"⌚",
+    rating:"★★★★☆",
+    discount:"۱۸٪"
+  },
+  {
+    id:4,
+    name:"تی‌شرت Premium",
+    category:"پوشاک",
+    price:850,
+    oldPrice:1100,
+    emoji:"👕",
+    rating:"★★★★★",
+    discount:"۲۲٪"
+  },
+  {
+    id:5,
+    name:"لپ‌تاپ حرفه‌ای",
+    category:"دیجیتال",
+    price:38500,
+    oldPrice:42000,
+    emoji:"💻",
+    rating:"★★★★★",
+    discount:"۸٪"
+  },
+  {
+    id:6,
+    name:"اسپیکر قدرتمند",
+    category:"دیجیتال",
+    price:2400,
+    oldPrice:3000,
+    emoji:"🔊",
+    rating:"★★★★☆",
+    discount:"۲۰٪"
+  },
+  {
+    id:7,
+    name:"کفش ورزشی",
+    category:"پوشاک",
+    price:1750,
+    oldPrice:2200,
+    emoji:"👟",
+    rating:"★★★★★",
+    discount:"۲۰٪"
+  },
+  {
+    id:8,
+    name:"چراغ هوشمند خانه",
+    category:"خانه",
+    price:650,
+    oldPrice:850,
+    emoji:"💡",
+    rating:"★★★★☆",
+    discount:"۲۳٪"
+  }
+];
 
-function addToCart(name, price){
+let cart = JSON.parse(localStorage.getItem("novaCart")) || [];
+let currentProducts = [...products];
 
-    cart.push({
-        name:name,
-        price:price
-    });
+function renderProducts(list=currentProducts){
 
-    updateCart();
+  const grid = document.getElementById("productGrid");
 
-    showMessage(
-        "محصول به سبد خرید اضافه شد ✅"
-    );
+  if(list.length === 0){
+    grid.innerHTML = `
+      <div style="grid-column:1/-1;text-align:center;padding:50px">
+        😕 محصولی پیدا نشد.
+      </div>
+    `;
+    return;
+  }
+
+  grid.innerHTML = list.map(p => `
+
+    <article class="product">
+
+      <div class="product-img">
+
+        <span class="discount">${p.discount}</span>
+
+        <button class="favorite"
+          onclick="favorite(this)">
+          ♡
+        </button>
+
+        <span>${p.emoji}</span>
+
+      </div>
+
+      <div class="product-info">
+
+        <small>${p.category}</small>
+
+        <h3>${p.name}</h3>
+
+        <div class="rating">${p.rating}</div>
+
+        <div class="price">
+          <span class="new-price">
+            ${format(p.price)} افغانی
+          </span>
+
+          <span class="old-price">
+            ${format(p.oldPrice)}
+          </span>
+        </div>
+
+        <button class="buy" onclick="addToCart(${p.id})">
+          افزودن به سبد 🛒
+        </button>
+
+      </div>
+
+    </article>
+
+  `).join("");
 }
 
+function format(number){
+  return number.toLocaleString("fa-AF");
+}
+
+function addToCart(id){
+
+  const product = products.find(p=>p.id===id);
+
+  const item = cart.find(p=>p.id===id);
+
+  if(item){
+    item.qty++;
+  }else{
+    cart.push({...product,qty:1});
+  }
+
+  saveCart();
+
+  showToast("محصول به سبد خرید اضافه شد ✅");
+
+  updateCart();
+}
+
+function saveCart(){
+  localStorage.setItem("novaCart",JSON.stringify(cart));
+}
 
 function updateCart(){
 
-    const cartCount =
-        document.getElementById("cartCount");
+  const count = cart.reduce((sum,item)=>sum+item.qty,0);
 
-    const cartItems =
-        document.getElementById("cartItems");
+  document.getElementById("cartCount").textContent = count;
 
-    const cartTotal =
-        document.getElementById("cartTotal");
+  const container = document.getElementById("cartItems");
 
+  if(cart.length===0){
 
-    cartCount.textContent =
-        cart.length;
+    container.innerHTML = `
+      <div style="text-align:center;padding:60px 10px">
+        🛒<br><br>
+        سبد خرید خالی است.
+      </div>
+    `;
 
+  }else{
 
-    if(cart.length === 0){
+    container.innerHTML = cart.map(item=>`
 
-        cartItems.innerHTML =
-            "<p>سبد خرید خالی است.</p>";
+      <div class="cart-item">
 
-        cartTotal.textContent =
-            "0";
+        <div class="cart-emoji">${item.emoji}</div>
 
-        return;
-    }
+        <div style="flex:1">
 
+          <b>${item.name}</b>
 
-    let html = "";
-    let total = 0;
+          <div style="font-size:13px;margin-top:5px">
+            ${format(item.price)} افغانی
+          </div>
 
+          <div class="qty">
 
-    cart.forEach(function(item,index){
+            <button onclick="changeQty(${item.id},1)">
+              +
+            </button>
 
-        total += item.price;
+            <span>${item.qty}</span>
 
-        html += `
-            <div class="cart-item">
+            <button onclick="changeQty(${item.id},-1)">
+              −
+            </button>
 
-                <div class="cart-item-title">
-                    ${item.name}
-                </div>
+            <button onclick="removeItem(${item.id})">
+              🗑️
+            </button>
 
-                <div>
-                    ${item.price.toLocaleString()}
-                    افغانی
-                </div>
+          </div>
 
-                <button
-                    class="remove-btn"
-                    onclick="removeFromCart(${index})"
-                >
-                    حذف
-                </button>
+        </div>
 
-            </div>
-        `;
+      </div>
 
-    });
+    `).join("");
+  }
 
+  const total = cart.reduce(
+    (sum,item)=>sum+(item.price*item.qty),0
+  );
 
-    cartItems.innerHTML =
-        html;
-
-    cartTotal.textContent =
-        total.toLocaleString();
+  document.getElementById("cartTotal").textContent =
+    format(total)+" افغانی";
 }
 
+function changeQty(id,change){
 
-function removeFromCart(index){
+  const item=cart.find(p=>p.id===id);
 
-    cart.splice(index,1);
+  if(!item)return;
 
-    updateCart();
+  item.qty+=change;
 
-    showMessage(
-        "محصول از سبد خرید حذف شد"
-    );
+  if(item.qty<=0){
+    cart=cart.filter(p=>p.id!==id);
+  }
+
+  saveCart();
+  updateCart();
 }
 
+function removeItem(id){
+
+  cart=cart.filter(p=>p.id!==id);
+
+  saveCart();
+  updateCart();
+
+  showToast("محصول حذف شد");
+}
 
 function openCart(){
 
-    document
-        .getElementById("cartPanel")
-        .classList.add("active");
+  document.getElementById("cart").classList.add("show");
+  document.getElementById("overlay").classList.add("show");
 
-    document
-        .getElementById("overlay")
-        .classList.add("active");
+  updateCart();
 }
-
 
 function closeCart(){
 
-    document
-        .getElementById("cartPanel")
-        .classList.remove("active");
+  document.getElementById("cart").classList.remove("show");
+  document.getElementById("overlay").classList.remove("show");
 
-    document
-        .getElementById("overlay")
-        .classList.remove("active");
 }
 
+function searchProducts(){
+
+  const value =
+    document.getElementById("searchInput").value
+    .trim()
+    .toLowerCase();
+
+  currentProducts = products.filter(p =>
+    p.name.toLowerCase().includes(value) ||
+    p.category.toLowerCase().includes(value)
+  );
+
+  renderProducts(currentProducts);
+}
+
+function filterCategory(category){
+
+  currentProducts =
+    products.filter(p=>p.category===category);
+
+  renderProducts(currentProducts);
+
+  document.getElementById("products")
+    .scrollIntoView({behavior:"smooth"});
+}
+
+function sortProducts(type){
+
+  let list=[...currentProducts];
+
+  if(type==="low"){
+    list.sort((a,b)=>a.price-b.price);
+  }
+
+  if(type==="high"){
+    list.sort((a,b)=>b.price-a.price);
+  }
+
+  renderProducts(list);
+}
+
+function favorite(button){
+
+  button.textContent =
+    button.textContent==="♡" ? "♥" : "♡";
+
+  showToast(
+    button.textContent==="♥"
+    ? "به علاقه‌مندی‌ها اضافه شد ❤️"
+    : "از علاقه‌مندی‌ها حذف شد"
+  );
+}
+
+function toggleDark(){
+
+  document.body.classList.toggle("dark");
+
+  localStorage.setItem(
+    "novaDark",
+    document.body.classList.contains("dark")
+  );
+}
+
+function subscribe(){
+
+  const email=document.getElementById("email").value;
+
+  if(!email || !email.includes("@")){
+    showToast("لطفاً یک ایمیل معتبر وارد کن");
+    return;
+  }
+
+  document.getElementById("email").value="";
+
+  showToast("عضویت با موفقیت انجام شد ✅");
+}
 
 function checkout(){
 
-    if(cart.length === 0){
+  if(cart.length===0){
+    showToast("سبد خرید خالی است");
+    return;
+  }
 
-        showMessage(
-            "ابتدا یک محصول به سبد خرید اضافه کنید."
-        );
-
-        return;
-    }
-
-
-    showMessage(
-        "سفارش شما ثبت شد ✅"
-    );
-
+  showToast(
+    "سفارش شما آماده ثبت است 📦"
+  );
 }
 
+function showToast(message){
 
-function sendMessage(){
+  const toast=document.getElementById("toast");
 
-    const name =
-        document.getElementById("name").value.trim();
+  toast.textContent=message;
+  toast.classList.add("show");
 
-    const phone =
-        document.getElementById("phone").value.trim();
-
-    const message =
-        document.getElementById("messageText").value.trim();
-
-
-    if(
-        name === "" ||
-        phone === "" ||
-        message === ""
-    ){
-
-        showMessage(
-            "لطفاً همه قسمت‌ها را پر کنید."
-        );
-
-        return;
-    }
-
-
-    showMessage(
-        "پیام شما با موفقیت ارسال شد ✅"
-    );
-
-
-    document.getElementById("name").value = "";
-    document.getElementById("phone").value = "";
-    document.getElementById("messageText").value = "";
-
+  setTimeout(()=>{
+    toast.classList.remove("show");
+  },2500);
 }
 
+/* LOAD */
 
-function showMessage(text){
-
-    const message =
-        document.getElementById("message");
-
-    message.textContent =
-        text;
-
-    message.style.display =
-        "block";
-
-
-    setTimeout(function(){
-
-        message.style.display =
-            "none";
-
-    },2500);
-
+if(localStorage.getItem("novaDark")==="true"){
+  document.body.classList.add("dark");
 }
+
+renderProducts();
+updateCart();
 
 </script>
 
